@@ -1,8 +1,8 @@
 // Обертка (Арр)
 .wrapper {
   margin: 0 auto;
-  padding: 0 10px;
-  box-sizing: content-box;
+  padding: 10px 10px 0px;
+  box-sizing: border-box;
   max-width: 1200px;
   min-height: 100vh;
   display: grid;
