@@ -1,24 +1,22 @@
 import ImgProfile from '../../assets/img/profile-img.jpg'
+import styles from './Profile.module.scss'
 
 export function Profile() {
   return (
-    <div className="content">
-      <div className="content__header">
+    <div className={styles.profile}>
+      <div className={styles.header}>
         <img src={ImgProfile} alt="" />
       </div>
-      <div className="content__avatar-info">Avatar + info</div>
-      <div className="content__my-posts">
-        <h3 className="my-posts__title">My posts</h3>
-        <form className="my-posts__create">
+      <div className={styles.info}>Avatar + info</div>
+      <div className={styles.content}>
+        <h3 className={styles.title}>My posts</h3>
+        <form className={styles.postCreationForm}>
           <input type="text" />
           <button type="submit">Send</button>
         </form>
-        <div className="my-posts__posts">
-          <div className="my-posts__post">post 1</div>
-          <div className="my-posts__post">post 2</div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, vitae omnis sunt vel
-          facilis tempore natus enim perferendis inventore, incidunt beatae ad! Eveniet doloribus
-          neque nulla ipsa obcaecati. Ipsam, nobis!
+        <div className={styles.posts}>
+          <div className={styles.post}>post 1</div>
+          <div className={styles.post}>post 2</div>
         </div>
       </div>
     </div>

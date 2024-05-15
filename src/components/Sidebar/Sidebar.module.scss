@@ -1,0 +1,29 @@
+.sidebar {
+  grid-area: sidebar;
+  border-radius: 10px 10px 0px 0px;
+  background: linear-gradient(to right, #d5dfff, 20%, #fff);
+  box-shadow: 5px 0px 10px -4px rgb(4, 84, 15);
+}
+
+.menu {
+  padding-top: 15px;
+}
+
+.menuItems {
+}
+
+.menuItem {
+  font-size: 34px;
+  color: #484848;
+  line-height: 140%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+.itemLink {
+  display: block;
+  padding: 0 16px;
+}

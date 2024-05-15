@@ -1,0 +1,18 @@
+.header {
+  grid-area: header;
+  border-radius: 10px;
+  background: linear-gradient(#d5dfff, #fff);
+  box-shadow: 0 5px 10px -4px rgb(4, 84, 15);
+}
+
+.logo {
+  margin-left: 16px;
+  height: 100%;
+  width: 50px;
+  display: flex;
+  align-items: center;
+
+  & img {
+    width: 100%;
+  }
+}

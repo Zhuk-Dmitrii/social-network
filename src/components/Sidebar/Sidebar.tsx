@@ -1,30 +1,32 @@
+import styles from './Sidebar.module.scss'
+
 export function Sidebar() {
   return (
-    <div className="sidebar">
-      <nav className="menu">
-        <ul className="menu__items">
-          <li className="menu__item">
-            <a className="menu__item_link" href="#">
+    <div className={styles.sidebar}>
+      <nav className={styles.menu}>
+        <ul className={styles.menuItems}>
+          <li className={styles.menuItem}>
+            <a className={styles.itemLink} href="#">
               Profile
             </a>
           </li>
-          <li className="menu__item">
-            <a className="menu__item_link" href="#">
+          <li className={styles.menuItem}>
+            <a className={styles.itemLink} href="#">
               Messages
             </a>
           </li>
-          <li className="menu__item">
-            <a className="menu__item_link" href="#">
+          <li className={styles.menuItem}>
+            <a className={styles.itemLink} href="#">
               News
             </a>
           </li>
-          <li className="menu__item">
-            <a className="menu__item_link" href="#">
+          <li className={styles.menuItem}>
+            <a className={styles.itemLink} href="#">
               Music
             </a>
           </li>
-          <li className="menu__item">
-            <a className="menu__item_link" href="#">
+          <li className={styles.menuItem}>
+            <a className={styles.itemLink} href="#">
               Settings
             </a>
           </li>
