@@ -1,0 +1,15 @@
+.container {
+  max-width: 80%;
+  padding-left: 10px;
+}
+
+.title {
+}
+
+.postCreationForm {
+  margin-bottom: 50px;
+}
+
+.posts > :not(:last-child) {
+  margin-bottom: 20px;
+}
