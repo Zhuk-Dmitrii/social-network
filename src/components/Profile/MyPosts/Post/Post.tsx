@@ -10,7 +10,7 @@ export function Post({ data }: TProps) {
     <div className={styles.post}>
       <img className={styles.userAvatar} src={data.avatar} alt="user-avatar" />
       <p className={styles.text}>{data.text}</p>
-      <span className={styles.info}>{data.info}</span>
+      <span className={styles.info}>like: {data.like}</span>
     </div>
   )
 }
