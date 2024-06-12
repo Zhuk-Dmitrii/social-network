@@ -10,20 +10,26 @@
 }
 
 .menuItems {
-}
+  padding: 0 16px;
 
-.menuItem {
-  font-size: 34px;
-  color: #484848;
-  line-height: 140%;
-  transition: all 0.3s ease;
+  & .menuItem {
+    font-size: 34px;
+    color: #484848;
+    line-height: 140%;
+    transition: all 0.3s ease;
 
-  &:hover {
-    color: blue;
+    &:hover {
+      color: blue;
+    }
+  }
+
+  & > li > a {
+    display: block;
+    padding: 0 10px;
+    border-radius: 10px;
   }
 }
 
-.itemLink {
-  display: block;
-  padding: 0 16px;
+.active {
+  color: red;
 }

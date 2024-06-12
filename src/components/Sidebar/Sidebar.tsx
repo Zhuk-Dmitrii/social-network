@@ -1,37 +1,41 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { PATHS } from '../../router/path'
 import styles from './Sidebar.module.scss'
 
 export function Sidebar() {
+  function setActive({ isActive }: { isActive: boolean }) {
+    return isActive ? styles.active : ''
+  }
+
   return (
     <div className={styles.sidebar}>
       <nav className={styles.menu}>
         <ul className={styles.menuItems}>
           <li className={styles.menuItem}>
-            <Link className={styles.itemLink} to={PATHS.PROFILE}>
+            <NavLink className={setActive} to={PATHS.PROFILE}>
               Profile
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.itemLink} to={PATHS.DIALOGS}>
+            <NavLink className={setActive} to={PATHS.DIALOGS}>
               Messages
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.itemLink} to={PATHS.NEWS}>
+            <NavLink className={setActive} to={PATHS.NEWS}>
               News
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.itemLink} to={PATHS.MUSIC}>
+            <NavLink className={setActive} to={PATHS.MUSIC}>
               Music
-            </Link>
+            </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <Link className={styles.itemLink} to={PATHS.SETTINGS}>
+            <NavLink className={setActive} to={PATHS.SETTINGS}>
               Settings
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
