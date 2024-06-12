@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+
+import { PATHS } from '../../router/path'
 import styles from './Sidebar.module.scss'
 
 export function Sidebar() {
@@ -6,29 +9,29 @@ export function Sidebar() {
       <nav className={styles.menu}>
         <ul className={styles.menuItems}>
           <li className={styles.menuItem}>
-            <a className={styles.itemLink} href="#">
+            <Link className={styles.itemLink} to={PATHS.PROFILE}>
               Profile
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a className={styles.itemLink} href="#">
+            <Link className={styles.itemLink} to={PATHS.DIALOGS}>
               Messages
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a className={styles.itemLink} href="#">
+            <Link className={styles.itemLink} to={PATHS.NEWS}>
               News
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a className={styles.itemLink} href="#">
+            <Link className={styles.itemLink} to={PATHS.MUSIC}>
               Music
-            </a>
+            </Link>
           </li>
           <li className={styles.menuItem}>
-            <a className={styles.itemLink} href="#">
+            <Link className={styles.itemLink} to={PATHS.SETTINGS}>
               Settings
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

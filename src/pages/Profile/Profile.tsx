@@ -1,4 +1,4 @@
-import { MyPosts } from './MyPosts'
+import { MyPosts } from '../../components/MyPosts'
 import ImgProfile from '../../assets/img/profile-img.jpg'
 import styles from './Profile.module.scss'
 
