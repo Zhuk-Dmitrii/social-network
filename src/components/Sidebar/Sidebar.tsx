@@ -1,19 +1,43 @@
-import { NavLink } from 'react-router-dom'
-
+import { NavLinkItem } from '../NavLinkItem'
 import { PATHS } from '../../router/path'
 import styles from './Sidebar.module.scss'
 
 export function Sidebar() {
-  function setActive({ isActive }: { isActive: boolean }) {
-    return isActive ? styles.active : ''
-  }
-
   return (
     <div className={styles.sidebar}>
       <nav className={styles.menu}>
         <ul className={styles.menuItems}>
-          <li className={styles.menuItem}>
-            <NavLink className={setActive} to={PATHS.PROFILE}>
+          <NavLinkItem
+            to={PATHS.PROFILE}
+            className={styles.menuItem}
+            classActive={styles.active}
+            value="Profile"
+          />
+          <NavLinkItem
+            to={PATHS.DIALOGS}
+            className={styles.menuItem}
+            classActive={styles.active}
+            value="Messages"
+          />
+          <NavLinkItem
+            to={PATHS.NEWS}
+            className={styles.menuItem}
+            classActive={styles.active}
+            value="News"
+          />
+          <NavLinkItem
+            to={PATHS.MUSIC}
+            className={styles.menuItem}
+            classActive={styles.active}
+            value="Music"
+          />
+          <NavLinkItem
+            to={PATHS.SETTINGS}
+            className={styles.menuItem}
+            classActive={styles.active}
+            value="Settings"
+          />
+          {/* <NavLink className={setActive} to={PATHS.PROFILE}>
               Profile
             </NavLink>
           </li>
@@ -36,7 +60,7 @@ export function Sidebar() {
             <NavLink className={setActive} to={PATHS.SETTINGS}>
               Settings
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

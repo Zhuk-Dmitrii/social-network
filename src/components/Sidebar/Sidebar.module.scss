@@ -19,7 +19,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: blue;
+      color: rgba(0, 0, 255, 0.8);
     }
   }
 
@@ -31,5 +31,7 @@
 }
 
 .active {
-  color: red;
+  background: linear-gradient(to left, #d5dfff, 10%, #fff);
+  box-shadow: -3px 4px 6px -1px rgba(4, 84, 15, 0.5);
+  transition: all 0.3s ease;
 }

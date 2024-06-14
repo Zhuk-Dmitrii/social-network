@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
         element: <Dialogs />,
       },
       {
+        path: `${PATHS.DIALOGS}/:id`,
+        element: <Dialogs />,
+      },
+      {
         path: PATHS.NEWS,
         element: <News />,
       },

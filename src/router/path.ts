@@ -3,11 +3,11 @@ export enum PATHS {
   HOME = '/',
 
   // URL pages
-  PROFILE = 'profile',
-  DIALOGS = 'dialogs',
-  NEWS = 'news',
-  MUSIC = 'music',
-  SETTINGS = 'settings',
+  PROFILE = '/profile',
+  DIALOGS = '/dialogs',
+  NEWS = '/news',
+  MUSIC = '/music',
+  SETTINGS = '/settings',
 
   // Error
   NOT_FOUND = '*',
