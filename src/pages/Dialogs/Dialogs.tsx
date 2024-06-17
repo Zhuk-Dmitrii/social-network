@@ -1,3 +1,4 @@
+import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
 import { PATHS } from '../../router/path'
 import styles from './Dialogs.module.scss'
@@ -14,40 +15,45 @@ export function Dialogs() {
               className={styles.dialogItem}
               classActive={styles.active}
               value="Андрей"
+              flag="dialogs"
             />
             <NavLinkItem
               to={`${PATHS.DIALOGS}/2`}
               className={styles.dialogItem}
               classActive={styles.active}
               value="Ольга"
+              flag="dialogs"
             />
             <NavLinkItem
               to={`${PATHS.DIALOGS}/3`}
               className={styles.dialogItem}
               classActive={styles.active}
               value="Света"
+              flag="dialogs"
             />
             <NavLinkItem
               to={`${PATHS.DIALOGS}/4`}
               className={styles.dialogItem}
               classActive={styles.active}
               value="Игорь"
+              flag="dialogs"
             />
             <NavLinkItem
               to={`${PATHS.DIALOGS}/5`}
               className={styles.dialogItem}
               classActive={styles.active}
               value="Вася"
+              flag="dialogs"
             />
           </ul>
         </div>
         <div className={styles.messages}>
           <ul className={styles.messagesList}>
-            <li className={styles.messageItem}>Hi!</li>
-            <li className={styles.messageItem}>Hello</li>
-            <li className={styles.messageItem}>Как дела?</li>
-            <li className={styles.messageItem}>Хорошо! У тебя как?</li>
-            <li className={styles.messageItem}>Отлично!</li>
+            <MessageItem message="Hi!" />
+            <MessageItem message="Hello!" />
+            <MessageItem message="Как дела?" />
+            <MessageItem message="Хорошо! У тебя как?" />
+            <MessageItem message="Отлично!" />
           </ul>
         </div>
       </div>
