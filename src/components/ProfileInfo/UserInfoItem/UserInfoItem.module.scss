@@ -1,0 +1,18 @@
+.userInfoItem {
+  & span {
+    font-weight: 600;
+  }
+
+  & a {
+    transition: all 0.3s ease;
+  }
+
+  & a:hover {
+    color: blue;
+    transition: all 0.3s ease;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
