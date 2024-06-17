@@ -1,7 +1,7 @@
-import styles from './ProfileInfo.module.scss'
+import { UserInfoItem } from './UserInfoItem'
 import ImgProfile from '../../assets/img/profile-img.jpg'
 import avatar from '../../assets/icon/user.png'
-import { UserInfoItem } from './UserInfoItem/UserInfoItem'
+import styles from './ProfileInfo.module.scss'
 
 export function ProfileInfo() {
   return (
