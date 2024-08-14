@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
       },
       {
         path: PATHS.DIALOGS,
-        element: <Dialogs />,
+        element: <Navigate to={`${PATHS.DIALOGS}/1`} replace />,
       },
       {
         path: `${PATHS.DIALOGS}/:id`,
