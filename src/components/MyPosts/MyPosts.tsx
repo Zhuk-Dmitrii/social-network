@@ -1,26 +1,6 @@
 import { Post } from './Post'
+import { myPostData } from './data'
 import styles from './MyPosts.module.scss'
-
-export interface IPost {
-  avatar: string
-  text: string
-  like: string | number
-}
-
-const data: Array<IPost> = [
-  {
-    avatar:
-      'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
-    text: 'My first post',
-    like: 1,
-  },
-  {
-    avatar:
-      'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
-    text: 'Hi, my name is Dmitry',
-    like: 2,
-  },
-]
 
 export function MyPosts() {
   return (
@@ -31,8 +11,9 @@ export function MyPosts() {
         <button type="submit">Send</button>
       </form>
       <div className={styles.posts}>
-        <Post data={data[0]} />
-        <Post data={data[1]} />
+        {myPostData.map(post => (
+          <Post key={post.id} data={post} />
+        ))}
       </div>
     </div>
   )

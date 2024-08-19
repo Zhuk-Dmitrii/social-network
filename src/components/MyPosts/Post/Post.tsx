@@ -1,8 +1,8 @@
-import { IPost } from '../MyPosts'
+import { TMyPostData } from '../data'
 import styles from './Post.module.scss'
 
 type TProps = {
-  data: IPost
+  data: TMyPostData
 }
 
 export function Post({ data }: TProps) {
