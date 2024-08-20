@@ -1,17 +1,19 @@
 import { ProfileInfo } from '../../components/ProfileInfo'
 import { MyPosts } from '../../components/MyPosts'
-import { TMyPostData } from '../../index'
+import { TMyPostData } from '../../types/type'
 import styles from './Profile.module.scss'
 
 type TProfileProps = {
-  myPostData: Array<TMyPostData>
+  state: {
+    myPostData: Array<TMyPostData>
+  }
 }
 
 export function Profile(props: TProfileProps) {
   return (
     <div className={styles.wrapper}>
       <ProfileInfo />
-      <MyPosts myPostData={props.myPostData} />
+      <MyPosts myPostData={props.state.myPostData} />
     </div>
   )
 }

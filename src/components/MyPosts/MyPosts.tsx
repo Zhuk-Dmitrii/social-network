@@ -1,5 +1,5 @@
 import { Post } from './Post'
-import { TMyPostData } from '../../index'
+import { TMyPostData } from '../../types/type'
 import styles from './MyPosts.module.scss'
 
 type TMyPostProps = {

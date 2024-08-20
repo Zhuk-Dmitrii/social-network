@@ -8,13 +8,9 @@ import { News } from '../pages/News'
 import { Music } from '../pages/Music'
 import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
-import { TUsersDialogsData, TMessageData, TMyPostData } from '../index'
+import { TState } from '../types/type'
 
-export const router = (
-  usersDialogsData: Array<TUsersDialogsData>,
-  messageData: Array<TMessageData>,
-  myPostData: Array<TMyPostData>,
-) =>
+export const router = (state: TState) =>
   createBrowserRouter([
     {
       path: PATHS.HOME,
@@ -26,7 +22,7 @@ export const router = (
         },
         {
           path: PATHS.PROFILE,
-          element: <Profile myPostData={myPostData} />,
+          element: <Profile state={state.profilePage} />,
         },
         {
           path: PATHS.DIALOGS,
@@ -34,7 +30,7 @@ export const router = (
         },
         {
           path: `${PATHS.DIALOGS}/:id`,
-          element: <Dialogs usersDialogsData={usersDialogsData} messageData={messageData} />,
+          element: <Dialogs state={state.messagesPage} />,
         },
         {
           path: PATHS.NEWS,
