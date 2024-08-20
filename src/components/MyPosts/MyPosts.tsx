@@ -1,8 +1,12 @@
 import { Post } from './Post'
-import { myPostData } from './data'
+import { TMyPostData } from '../../index'
 import styles from './MyPosts.module.scss'
 
-export function MyPosts() {
+type TMyPostProps = {
+  myPostData: Array<TMyPostData>
+}
+
+export function MyPosts(props: TMyPostProps) {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>My posts</h3>
@@ -11,7 +15,7 @@ export function MyPosts() {
         <button type="submit">Send</button>
       </form>
       <div className={styles.posts}>
-        {myPostData.map(post => (
+        {props.myPostData.map(post => (
           <Post key={post.id} data={post} />
         ))}
       </div>
