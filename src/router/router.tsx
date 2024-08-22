@@ -14,7 +14,7 @@ export const router = (state: TState) =>
   createBrowserRouter([
     {
       path: PATHS.HOME,
-      element: <Layout />,
+      element: <Layout state={state.sidebar} />,
       children: [
         {
           path: PATHS.HOME,

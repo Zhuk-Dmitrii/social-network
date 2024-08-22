@@ -1,0 +1,27 @@
+.friends {
+  width: 100%;
+  padding: 0 16px;
+  margin-top: 50px;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  font-size: 40px;
+  color: #484848;
+  line-height: 140%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: rgba(0, 0, 255, 0.8);
+  }
+}
+
+.friendItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
