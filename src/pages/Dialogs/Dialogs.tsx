@@ -1,3 +1,5 @@
+import React, { RefObject } from 'react'
+
 import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
 import { PATHS } from '../../router/path'
@@ -12,6 +14,17 @@ type TDialogsProps = {
 }
 
 export function Dialogs(props: TDialogsProps) {
+  const refInput: RefObject<HTMLInputElement> = React.createRef()
+
+  function handleClickBtnSend() {
+    if (refInput.current) {
+      const value = refInput.current.value
+      console.log(value)
+
+      refInput.current.value = ''
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Dialogs</h2>
@@ -36,6 +49,12 @@ export function Dialogs(props: TDialogsProps) {
               <MessageItem key={item.id} message={item.message} />
             ))}
           </ul>
+          <div className={styles.containerForInputMessage}>
+            <input className={styles.inputMessage} ref={refInput} type="text" />
+            <button className={styles.btnSendMessage} onClick={handleClickBtnSend}>
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
