@@ -1,5 +1,6 @@
+import { rerenderEntireTree } from '../render'
 import { PATHS } from '../router/path'
-import { TState } from '../types/type'
+import { TState, TMyPostData } from '../types/type'
 import userAvatar from '../assets/icon/user.png'
 
 export const state: TState = {
@@ -76,6 +77,7 @@ export const state: TState = {
         like: 2,
       },
     ],
+    myPostText: '',
   },
   messagesPage: {
     usersDialogsData: [
@@ -123,4 +125,24 @@ export const state: TState = {
       },
     ],
   },
+}
+
+export function addMyPost() {
+  const newPost: TMyPostData = {
+    id: crypto.randomUUID(),
+    avatar:
+      'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
+    text: state.profilePage.myPostText,
+    like: 0,
+  }
+
+  state.profilePage.myPostData.push(newPost)
+
+  rerenderEntireTree(state)
+}
+
+export function changeMyPostText(text: string) {
+  state.profilePage.myPostText = text
+
+  rerenderEntireTree(state)
 }

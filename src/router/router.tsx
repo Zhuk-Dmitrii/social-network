@@ -10,7 +10,11 @@ import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
 import { TState } from '../types/type'
 
-export const router = (state: TState) =>
+export const router = (
+  state: TState,
+  addMyPost: () => void,
+  changeMyPostText: (text: string) => void,
+) =>
   createBrowserRouter([
     {
       path: PATHS.HOME,
@@ -22,7 +26,13 @@ export const router = (state: TState) =>
         },
         {
           path: PATHS.PROFILE,
-          element: <Profile state={state.profilePage} />,
+          element: (
+            <Profile
+              state={state.profilePage}
+              addMyPost={addMyPost}
+              changeMyPostText={changeMyPostText}
+            />
+          ),
         },
         {
           path: PATHS.DIALOGS,

@@ -34,6 +34,7 @@ export type TState = {
   }
   profilePage: {
     myPostData: Array<TMyPostData>
+    myPostText: string
   }
   messagesPage: {
     usersDialogsData: Array<TUsersDialogsData>
