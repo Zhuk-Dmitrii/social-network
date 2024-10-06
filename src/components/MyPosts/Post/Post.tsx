@@ -1,4 +1,4 @@
-import { TMyPostData } from '../data'
+import { TMyPostData } from '../../../types/type'
 import styles from './Post.module.scss'
 
 type TProps = {

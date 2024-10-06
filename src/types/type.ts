@@ -39,5 +39,6 @@ export type TState = {
   messagesPage: {
     usersDialogsData: Array<TUsersDialogsData>
     messageData: Array<TMessageData>
+    messageText: string
   }
 }

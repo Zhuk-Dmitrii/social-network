@@ -14,6 +14,8 @@ export const router = (
   state: TState,
   addMyPost: () => void,
   changeMyPostText: (text: string) => void,
+  addMessage: () => void,
+  changeMessageText: (text: string) => void,
 ) =>
   createBrowserRouter([
     {
@@ -40,7 +42,13 @@ export const router = (
         },
         {
           path: `${PATHS.DIALOGS}/:id`,
-          element: <Dialogs state={state.messagesPage} />,
+          element: (
+            <Dialogs
+              state={state.messagesPage}
+              addMessage={addMessage}
+              changeMessageText={changeMessageText}
+            />
+          ),
         },
         {
           path: PATHS.NEWS,

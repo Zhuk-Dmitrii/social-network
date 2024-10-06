@@ -1,6 +1,6 @@
 import { rerenderEntireTree } from '../render'
 import { PATHS } from '../router/path'
-import { TState, TMyPostData } from '../types/type'
+import { TState, TMyPostData, TMessageData } from '../types/type'
 import userAvatar from '../assets/icon/user.png'
 
 export const state: TState = {
@@ -124,6 +124,7 @@ export const state: TState = {
         message: 'Отлично!',
       },
     ],
+    messageText: '',
   },
 }
 
@@ -143,6 +144,23 @@ export function addMyPost() {
 
 export function changeMyPostText(text: string) {
   state.profilePage.myPostText = text
+
+  rerenderEntireTree(state)
+}
+
+export function addMessage() {
+  const newMessage: TMessageData = {
+    id: crypto.randomUUID(),
+    message: state.messagesPage.messageText,
+  }
+
+  state.messagesPage.messageData.push(newMessage)
+
+  rerenderEntireTree(state)
+}
+
+export function changeMessageText(text: string) {
+  state.messagesPage.messageText = text
 
   rerenderEntireTree(state)
 }

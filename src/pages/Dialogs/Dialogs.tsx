@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react'
+import { ChangeEvent, FormEvent } from 'react'
 
 import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
@@ -10,19 +10,24 @@ type TDialogsProps = {
   state: {
     usersDialogsData: Array<TUsersDialogsData>
     messageData: Array<TMessageData>
+    messageText: string
   }
+  addMessage: () => void
+  changeMessageText: (text: string) => void
 }
 
 export function Dialogs(props: TDialogsProps) {
-  const refInput: RefObject<HTMLInputElement> = React.createRef()
+  const addNewMessage = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
 
-  function handleClickBtnSend() {
-    if (refInput.current) {
-      const value = refInput.current.value
-      console.log(value)
+    props.addMessage()
+    props.changeMessageText('')
+  }
 
-      refInput.current.value = ''
-    }
+  const changeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value
+
+    props.changeMessageText(value)
   }
 
   return (
@@ -49,12 +54,17 @@ export function Dialogs(props: TDialogsProps) {
               <MessageItem key={item.id} message={item.message} />
             ))}
           </ul>
-          <div className={styles.containerForInputMessage}>
-            <input className={styles.inputMessage} ref={refInput} type="text" />
-            <button className={styles.btnSendMessage} onClick={handleClickBtnSend}>
+          <form className={styles.containerForInputMessage} onSubmit={addNewMessage}>
+            <input
+              className={styles.inputMessage}
+              onChange={changeInputMessage}
+              value={props.state.messageText}
+              type="text"
+            />
+            <button className={styles.btnSendMessage} type="submit">
               Send
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

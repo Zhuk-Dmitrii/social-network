@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client'
 
 import { App } from './App.tsx'
-import { addMyPost, changeMyPostText } from './redux/state.ts'
+import { addMessage, addMyPost, changeMessageText, changeMyPostText } from './redux/state.ts'
 import { TState } from './types/type.ts'
 
 import 'normalize.css'
@@ -11,5 +11,13 @@ const container = document.getElementById('root')!
 const root = ReactDOM.createRoot(container)
 
 export function rerenderEntireTree(state: TState) {
-  root.render(<App state={state} addMyPost={addMyPost} changeMyPostText={changeMyPostText} />)
+  root.render(
+    <App
+      state={state}
+      addMyPost={addMyPost}
+      changeMyPostText={changeMyPostText}
+      addMessage={addMessage}
+      changeMessageText={changeMessageText}
+    />,
+  )
 }
