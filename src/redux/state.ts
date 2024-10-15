@@ -1,7 +1,8 @@
-import { rerenderEntireTree } from '../render'
 import { PATHS } from '../router/path'
 import { TState, TMyPostData, TMessageData } from '../types/type'
 import userAvatar from '../assets/icon/user.png'
+
+type TRerenderFunction = (state: TState) => void
 
 export const state: TState = {
   sidebar: {
@@ -128,6 +129,8 @@ export const state: TState = {
   },
 }
 
+let rerenderEntireTree: TRerenderFunction = () => {}
+
 export function addMyPost() {
   const newPost: TMyPostData = {
     id: crypto.randomUUID(),
@@ -163,4 +166,8 @@ export function changeMessageText(text: string) {
   state.messagesPage.messageText = text
 
   rerenderEntireTree(state)
+}
+
+export function subscriber(callback: TRerenderFunction) {
+  rerenderEntireTree = callback
 }
