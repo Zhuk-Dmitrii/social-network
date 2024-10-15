@@ -42,3 +42,14 @@ export type TState = {
     messageText: string
   }
 }
+
+export type TStore = {
+  _state: TState
+  _renderFunction: (state: TState) => void
+  getState: () => TState
+  addMyPost: () => void
+  changeMyPostText: (text: string) => void
+  addMessage: () => void
+  changeMessageText: (text: string) => void
+  subscriber: (callback: (state: TState) => void) => void
+}

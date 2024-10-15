@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom/client'
 
-import { state, subscriber } from './redux/state.ts'
+import { store } from './redux/state.ts'
 import { App } from './App.tsx'
-import { addMessage, addMyPost, changeMessageText, changeMyPostText } from './redux/state.ts'
 import { TState } from './types/type.ts'
 
 import 'normalize.css'
@@ -15,13 +14,13 @@ export function rerenderEntireTree(state: TState) {
   root.render(
     <App
       state={state}
-      addMyPost={addMyPost}
-      changeMyPostText={changeMyPostText}
-      addMessage={addMessage}
-      changeMessageText={changeMessageText}
+      addMyPost={store.addMyPost.bind(store)}
+      changeMyPostText={store.changeMyPostText.bind(store)}
+      addMessage={store.addMessage.bind(store)}
+      changeMessageText={store.changeMessageText.bind(store)}
     />,
   )
 }
 
-rerenderEntireTree(state)
-subscriber(rerenderEntireTree)
+rerenderEntireTree(store.getState())
+store.subscriber(rerenderEntireTree)
