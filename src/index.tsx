@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 
-import { store } from './redux/state.ts'
+import { store } from './redux/store.ts'
 import { App } from './App.tsx'
 import { TState } from './types/type.ts'
 
