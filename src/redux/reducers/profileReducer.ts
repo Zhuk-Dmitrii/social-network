@@ -1,5 +1,5 @@
 import { TActionProfile, ActionProfile } from '../Actions/profileAction'
-import { TProfilePageState } from '../../types/type'
+import { TProfilePageState, TMyPostData } from '../../types/type'
 
 export function profileReducer(
   state: TProfilePageState,
@@ -9,7 +9,7 @@ export function profileReducer(
     case ActionProfile.ADD_POST: {
       const stateCopy = structuredClone(state)
 
-      const newPost = {
+      const newPost: TMyPostData = {
         id: crypto.randomUUID(),
         avatar:
           'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',

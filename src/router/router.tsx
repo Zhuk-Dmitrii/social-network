@@ -8,15 +8,9 @@ import { News } from '../pages/News'
 import { Music } from '../pages/Music'
 import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
-import { TState } from '../types/type'
-import { TActionProfile } from '../redux/Actions/profileAction'
+import { TAction, TState } from '../types/type'
 
-export const router = (
-  state: TState,
-  dispatch: (action: TActionProfile) => void,
-  addMessage: () => void,
-  changeMessageText: (text: string) => void,
-) =>
+export const router = (state: TState, dispatch: (action: TAction) => void) =>
   createBrowserRouter([
     {
       path: PATHS.HOME,
@@ -36,13 +30,7 @@ export const router = (
         },
         {
           path: `${PATHS.DIALOGS}/:id`,
-          element: (
-            <Dialogs
-              state={state.messagesPage}
-              addMessage={addMessage}
-              changeMessageText={changeMessageText}
-            />
-          ),
+          element: <Dialogs state={state.messagesPage} dispatch={dispatch} />,
         },
         {
           path: PATHS.NEWS,

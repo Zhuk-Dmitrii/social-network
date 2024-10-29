@@ -1,6 +1,9 @@
 import { PATHS } from '../router/path'
 import { profileReducer } from './reducers/profileReducer'
-import { TStore, TMessageData } from '../types/type'
+import { messageReducer } from './reducers/messageReducer'
+import { TStore, TAction } from '../types/type'
+import { ActionProfile, TActionProfile } from './Actions/profileAction'
+import { ActionMessage, TActionMessage } from './Actions/messageAction'
 import userAvatar from '../assets/icon/user.png'
 
 export const store: TStore = {
@@ -132,28 +135,19 @@ export const store: TStore = {
   getState() {
     return this._state
   },
-  addMessage() {
-    const newMessage: TMessageData = {
-      id: crypto.randomUUID(),
-      message: this._state.messagesPage.messageText,
-    }
-
-    this._state.messagesPage.messageData.push(newMessage)
-
-    this._renderFunction(this._state)
-  },
-  changeMessageText(text) {
-    this._state.messagesPage.messageText = text
-
-    this._renderFunction(this._state)
-  },
   subscriber(callback) {
     this._renderFunction = callback
   },
-  dispatch(action) {
+  dispatch(action: TAction) {
     const state = this.getState()
 
-    state.profilePage = profileReducer(this._state.profilePage, action)
+    if (action.type in ActionProfile) {
+      state.profilePage = profileReducer(this._state.profilePage, action as TActionProfile)
+    }
+
+    if (action.type in ActionMessage) {
+      state.messagesPage = messageReducer(this._state.messagesPage, action as TActionMessage)
+    }
 
     this._renderFunction(this._state)
   },

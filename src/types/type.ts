@@ -1,4 +1,5 @@
 import { TActionProfile } from '../redux/Actions/profileAction'
+import { TActionMessage } from '../redux/Actions/messageAction'
 
 // --------------------------- SIDE BAR --------------------
 export type TSidebarNavLink = {
@@ -56,12 +57,12 @@ export type TState = {
 }
 
 // --------------------------- STORE --------------------
+export type TAction = TActionProfile | TActionMessage
+
 export type TStore = {
   _state: TState
   _renderFunction: (state: TState) => void
   getState: () => TState
-  addMessage: () => void
-  changeMessageText: (text: string) => void
   subscriber: (callback: (state: TState) => void) => void
-  dispatch: (action: TActionProfile) => void
+  dispatch: (action: TAction) => void
 }

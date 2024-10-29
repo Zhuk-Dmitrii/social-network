@@ -3,7 +3,11 @@ import { ChangeEvent, FormEvent } from 'react'
 import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
 import { PATHS } from '../../router/path'
-import { TUsersDialogsData, TMessageData } from '../../types/type'
+import { TUsersDialogsData, TMessageData, TAction } from '../../types/type'
+import {
+  actionCreatorAddMessage,
+  actionCreatorChangeMessageText,
+} from '../../redux/Actions/messageAction'
 import styles from './Dialogs.module.scss'
 
 type TDialogsProps = {
@@ -12,22 +16,26 @@ type TDialogsProps = {
     messageData: Array<TMessageData>
     messageText: string
   }
-  addMessage: () => void
-  changeMessageText: (text: string) => void
+  dispatch: (action: TAction) => void
 }
 
 export function Dialogs(props: TDialogsProps) {
   const addNewMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    props.addMessage()
-    props.changeMessageText('')
+    const actionAddMessage = actionCreatorAddMessage()
+    const actionChangeMessageText = actionCreatorChangeMessageText('')
+
+    props.dispatch(actionAddMessage)
+    props.dispatch(actionChangeMessageText)
   }
 
   const changeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
 
-    props.changeMessageText(value)
+    const actionChangeMessageText = actionCreatorChangeMessageText(value)
+
+    props.dispatch(actionChangeMessageText)
   }
 
   return (

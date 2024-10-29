@@ -15,8 +15,8 @@ export function rerenderEntireTree(state: TState) {
     <App
       state={state}
       dispatch={store.dispatch.bind(store)}
-      addMessage={store.addMessage.bind(store)}
-      changeMessageText={store.changeMessageText.bind(store)}
+      // addMessage={store.addMessage.bind(store)}
+      // changeMessageText={store.changeMessageText.bind(store)}
     />,
   )
 }
