@@ -1,20 +1,6 @@
-export type TUsersDialogsData = {
-  id: number | string
-  name: string
-}
+import { TActionProfile } from '../redux/Actions/profileAction'
 
-export type TMessageData = {
-  id: number | string
-  message: string
-}
-
-export type TMyPostData = {
-  id: number | string
-  avatar: string
-  text: string
-  like: string | number
-}
-
+// --------------------------- SIDE BAR --------------------
 export type TSidebarNavLink = {
   id: number | string
   path: string
@@ -27,29 +13,55 @@ export type TSidebarFriends = {
   value: string
 }
 
-export type TState = {
-  sidebar: {
-    sidebarNavLink: Array<TSidebarNavLink>
-    friends: Array<TSidebarFriends>
-  }
-  profilePage: {
-    myPostData: Array<TMyPostData>
-    myPostText: string
-  }
-  messagesPage: {
-    usersDialogsData: Array<TUsersDialogsData>
-    messageData: Array<TMessageData>
-    messageText: string
-  }
+export type TSidebarNavLinkState = {
+  sidebarNavLink: Array<TSidebarNavLink>
+  friends: Array<TSidebarFriends>
 }
 
+// --------------------------- PROFILE --------------------
+export type TMyPostData = {
+  id: number | string
+  avatar: string
+  text: string
+  like: string | number
+}
+
+export type TProfilePageState = {
+  myPostData: Array<TMyPostData>
+  myPostText: string
+}
+
+// --------------------------- MESSAGE --------------------
+export type TUsersDialogsData = {
+  id: number | string
+  name: string
+}
+
+export type TMessageData = {
+  id: number | string
+  message: string
+}
+
+export type TMessageDataState = {
+  usersDialogsData: Array<TUsersDialogsData>
+  messageData: Array<TMessageData>
+  messageText: string
+}
+
+// --------------------------- STATE --------------------
+export type TState = {
+  sidebar: TSidebarNavLinkState
+  profilePage: TProfilePageState
+  messagesPage: TMessageDataState
+}
+
+// --------------------------- STORE --------------------
 export type TStore = {
   _state: TState
   _renderFunction: (state: TState) => void
   getState: () => TState
-  addMyPost: () => void
-  changeMyPostText: (text: string) => void
   addMessage: () => void
   changeMessageText: (text: string) => void
   subscriber: (callback: (state: TState) => void) => void
+  dispatch: (action: TActionProfile) => void
 }

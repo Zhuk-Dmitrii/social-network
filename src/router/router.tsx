@@ -9,11 +9,11 @@ import { Music } from '../pages/Music'
 import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
 import { TState } from '../types/type'
+import { TActionProfile } from '../redux/Actions/profileAction'
 
 export const router = (
   state: TState,
-  addMyPost: () => void,
-  changeMyPostText: (text: string) => void,
+  dispatch: (action: TActionProfile) => void,
   addMessage: () => void,
   changeMessageText: (text: string) => void,
 ) =>
@@ -28,13 +28,7 @@ export const router = (
         },
         {
           path: PATHS.PROFILE,
-          element: (
-            <Profile
-              state={state.profilePage}
-              addMyPost={addMyPost}
-              changeMyPostText={changeMyPostText}
-            />
-          ),
+          element: <Profile state={state.profilePage} dispatch={dispatch} />,
         },
         {
           path: PATHS.DIALOGS,

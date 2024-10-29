@@ -1,39 +1,42 @@
-import React, { FormEvent, RefObject } from 'react'
+import { ChangeEvent, FormEvent } from 'react'
 
 import { Post } from './Post'
 import { TMyPostData } from '../../types/type'
+import {
+  TActionProfile,
+  actionCreatorAddPost,
+  actionCreatorChangeMyPostText,
+} from '../../redux/Actions/profileAction'
 import styles from './MyPosts.module.scss'
 
 type TMyPostProps = {
   myPostData: Array<TMyPostData>
   myPostText: string
-  addMyPost: () => void
-  changeMyPostText: (text: string) => void
+  dispatch: (action: TActionProfile) => void
 }
 
 export function MyPosts(props: TMyPostProps) {
-  const refInput: RefObject<HTMLInputElement> = React.createRef()
-
   function addMyPost(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    props.addMyPost()
-    props.changeMyPostText('')
+    const action = actionCreatorAddPost()
+
+    props.dispatch(action)
   }
 
-  function changeMyPostInput() {
-    if (refInput.current) {
-      const value = refInput.current.value
+  function changeMyPostInput(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.currentTarget.value
 
-      props.changeMyPostText(value)
-    }
+    const action = actionCreatorChangeMyPostText(value)
+
+    props.dispatch(action)
   }
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>My posts</h3>
       <form onSubmit={addMyPost} className={styles.postCreationForm}>
-        <input ref={refInput} value={props.myPostText} onChange={changeMyPostInput} type="text" />
+        <input value={props.myPostText} onChange={changeMyPostInput} type="text" />
         <button type="submit">Send</button>
       </form>
       <div className={styles.posts}>

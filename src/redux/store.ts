@@ -1,5 +1,6 @@
 import { PATHS } from '../router/path'
-import { TStore, TMyPostData, TMessageData } from '../types/type'
+import { profileReducer } from './reducers/profileReducer'
+import { TStore, TMessageData } from '../types/type'
 import userAvatar from '../assets/icon/user.png'
 
 export const store: TStore = {
@@ -131,24 +132,6 @@ export const store: TStore = {
   getState() {
     return this._state
   },
-  addMyPost() {
-    const newPost: TMyPostData = {
-      id: crypto.randomUUID(),
-      avatar:
-        'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
-      text: this._state.profilePage.myPostText,
-      like: 0,
-    }
-
-    this._state.profilePage.myPostData.push(newPost)
-
-    this._renderFunction(this._state)
-  },
-  changeMyPostText(text) {
-    this._state.profilePage.myPostText = text
-
-    this._renderFunction(this._state)
-  },
   addMessage() {
     const newMessage: TMessageData = {
       id: crypto.randomUUID(),
@@ -166,5 +149,12 @@ export const store: TStore = {
   },
   subscriber(callback) {
     this._renderFunction = callback
+  },
+  dispatch(action) {
+    const state = this.getState()
+
+    state.profilePage = profileReducer(this._state.profilePage, action)
+
+    this._renderFunction(this._state)
   },
 }

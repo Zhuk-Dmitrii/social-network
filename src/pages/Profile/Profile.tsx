@@ -1,6 +1,7 @@
 import { ProfileInfo } from '../../components/ProfileInfo'
 import { MyPosts } from '../../components/MyPosts'
 import { TMyPostData } from '../../types/type'
+import { TActionProfile } from '../../redux/Actions/profileAction'
 import styles from './Profile.module.scss'
 
 type TProfileProps = {
@@ -8,8 +9,7 @@ type TProfileProps = {
     myPostData: Array<TMyPostData>
     myPostText: string
   }
-  addMyPost: () => void
-  changeMyPostText: (text: string) => void
+  dispatch: (action: TActionProfile) => void
 }
 
 export function Profile(props: TProfileProps) {
@@ -19,8 +19,7 @@ export function Profile(props: TProfileProps) {
       <MyPosts
         myPostData={props.state.myPostData}
         myPostText={props.state.myPostText}
-        addMyPost={props.addMyPost}
-        changeMyPostText={props.changeMyPostText}
+        dispatch={props.dispatch}
       />
     </div>
   )

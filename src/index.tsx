@@ -14,8 +14,7 @@ export function rerenderEntireTree(state: TState) {
   root.render(
     <App
       state={state}
-      addMyPost={store.addMyPost.bind(store)}
-      changeMyPostText={store.changeMyPostText.bind(store)}
+      dispatch={store.dispatch.bind(store)}
       addMessage={store.addMessage.bind(store)}
       changeMessageText={store.changeMessageText.bind(store)}
     />,
