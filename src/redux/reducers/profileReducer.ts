@@ -1,4 +1,4 @@
-import { TActionProfile, ActionTypeProfile } from '../Actions/profileAction'
+import { TActionProfile, ActionProfile } from '../Actions/profileAction'
 import { TProfilePageState } from '../../types/type'
 
 export function profileReducer(
@@ -6,7 +6,7 @@ export function profileReducer(
   action: TActionProfile,
 ): TProfilePageState {
   switch (action.type) {
-    case ActionTypeProfile.ADD_POST: {
+    case ActionProfile.ADD_POST: {
       const stateCopy = structuredClone(state)
 
       const newPost = {
@@ -22,7 +22,7 @@ export function profileReducer(
 
       return stateCopy
     }
-    case ActionTypeProfile.CHANGE_MY_POST_TEXT: {
+    case ActionProfile.CHANGE_MY_POST_TEXT: {
       const stateCopy = structuredClone(state)
 
       stateCopy.myPostText = action.text
