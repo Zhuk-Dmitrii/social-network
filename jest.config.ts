@@ -10,7 +10,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/tests/setupTests.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   modulePaths: ['<rootDir>'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
   transform: {
     '^.+\\.(ts|tsx)$': [
       'ts-jest',

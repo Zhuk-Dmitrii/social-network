@@ -5,6 +5,7 @@ export enum ActionProfile {
 
 type TActionCreatorAddPost = {
   type: ActionProfile.ADD_POST
+  id: string
 }
 
 type TActionCreatorChangeMyPostText = {
@@ -17,6 +18,7 @@ export type TActionProfile = TActionCreatorAddPost | TActionCreatorChangeMyPostT
 export function actionCreatorAddPost(): TActionCreatorAddPost {
   return {
     type: ActionProfile.ADD_POST,
+    id: crypto.randomUUID(),
   }
 }
 
