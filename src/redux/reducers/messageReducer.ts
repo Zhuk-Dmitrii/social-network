@@ -10,7 +10,7 @@ export function messageReducer(
       const stateCopy = structuredClone(state)
 
       const newMessage: TMessageData = {
-        id: crypto.randomUUID(),
+        id: action.id,
         message: state.messageText,
       }
 

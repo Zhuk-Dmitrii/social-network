@@ -5,6 +5,7 @@ export enum ActionMessage {
 
 type TActionCreatorAddMessage = {
   type: ActionMessage.ADD_MESSAGE
+  id: string
 }
 
 type TActionCreatorChangeMessageText = {
@@ -17,6 +18,7 @@ export type TActionMessage = TActionCreatorAddMessage | TActionCreatorChangeMess
 export function actionCreatorAddMessage(): TActionCreatorAddMessage {
   return {
     type: ActionMessage.ADD_MESSAGE,
+    id: crypto.randomUUID(),
   }
 }
 

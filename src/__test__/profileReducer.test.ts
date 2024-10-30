@@ -31,7 +31,7 @@ test('new post should be added on profile page', () => {
   expect(endState.myPostData[2].text).toBe(startState.myPostText)
 })
 
-test('input text value  should be changed', () => {
+test('input text value should be changed', () => {
   const startState: TProfilePageState = {
     myPostData: [
       {
