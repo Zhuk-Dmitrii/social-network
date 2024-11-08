@@ -135,7 +135,7 @@ export const customStore: TCustomStore = {
   getState() {
     return this._state
   },
-  subscriber(callback) {
+  subscribe(callback) {
     this._renderFunction = callback
   },
   dispatch(action: TAction) {

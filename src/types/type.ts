@@ -63,6 +63,6 @@ export type TCustomStore = {
   _state: TState
   _renderFunction: (state: TState) => void
   getState: () => TState
-  subscriber: (callback: (state: TState) => void) => void
+  subscribe: (callback: (state: TState) => void) => void
   dispatch: (action: TAction) => void
 }
