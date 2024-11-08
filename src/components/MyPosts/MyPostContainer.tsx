@@ -12,9 +12,7 @@ type TMyPostProps = {
 }
 
 export function MyPostsContainer(props: TMyPostProps) {
-  const profilePageData = props.store.getState().profilePage
-  const myPostData = profilePageData.myPostData
-  const myPostText = profilePageData.myPostText
+  const { myPostData, myPostText } = props.store.getState().profilePage
 
   function addMyPost() {
     const action = actionCreatorAddPost()

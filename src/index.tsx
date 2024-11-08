@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client'
 
-// import { customStore } from './redux/customStore.ts'
 import { store } from './redux/store.ts'
 import { App } from './App.tsx'
 import { TState } from './types/type.ts'

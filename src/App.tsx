@@ -2,8 +2,8 @@ import { RouterProvider } from 'react-router-dom'
 
 import { router } from './router/router'
 import { TAction, TState } from './types/type'
-import './App.scss'
 import { AppStore } from './redux/store'
+import './App.scss'
 
 type TAppProps = {
   store: AppStore
