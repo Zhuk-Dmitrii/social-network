@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { PATHS } from './path'
 import { Layout } from '../components/Layout'
 import { Profile } from '../pages/Profile'
-import { Dialogs } from '../pages/Dialogs'
+import { DialogsContainer } from '../pages/Dialogs'
 import { News } from '../pages/News'
 import { Music } from '../pages/Music'
 import { Settings } from '../pages/Settings'
@@ -31,7 +31,7 @@ export const router = (store: AppStore, state: TState, dispatch: (action: TActio
         },
         {
           path: `${PATHS.DIALOGS}/:id`,
-          element: <Dialogs state={state.messagesPage} dispatch={dispatch} />,
+          element: <DialogsContainer store={store} dispatch={dispatch} />,
         },
         {
           path: PATHS.NEWS,

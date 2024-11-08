@@ -3,39 +3,28 @@ import { ChangeEvent, FormEvent } from 'react'
 import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
 import { PATHS } from '../../router/path'
-import { TUsersDialogsData, TMessageData, TAction } from '../../types/type'
-import {
-  actionCreatorAddMessage,
-  actionCreatorChangeMessageText,
-} from '../../redux/Actions/messageAction'
+import { TUsersDialogsData, TMessageData } from '../../types/type'
 import styles from './Dialogs.module.scss'
 
 type TDialogsProps = {
-  state: {
-    usersDialogsData: Array<TUsersDialogsData>
-    messageData: Array<TMessageData>
-    messageText: string
-  }
-  dispatch: (action: TAction) => void
+  usersDialogsData: Array<TUsersDialogsData>
+  messageData: Array<TMessageData>
+  messageText: string
+  addNewMessage: () => void
+  changeInputMessage: (value: string) => void
 }
 
 export function Dialogs(props: TDialogsProps) {
   const addNewMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const actionAddMessage = actionCreatorAddMessage()
-    const actionChangeMessageText = actionCreatorChangeMessageText('')
-
-    props.dispatch(actionAddMessage)
-    props.dispatch(actionChangeMessageText)
+    props.addNewMessage()
   }
 
   const changeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
 
-    const actionChangeMessageText = actionCreatorChangeMessageText(value)
-
-    props.dispatch(actionChangeMessageText)
+    props.changeInputMessage(value)
   }
 
   return (
@@ -44,7 +33,7 @@ export function Dialogs(props: TDialogsProps) {
       <div className={styles.container}>
         <div className={styles.dialogs}>
           <ul className={styles.dialogList}>
-            {props.state.usersDialogsData.map(item => (
+            {props.usersDialogsData.map(item => (
               <NavLinkItem
                 key={item.id}
                 to={`${PATHS.DIALOGS}/${item.id}`}
@@ -58,7 +47,7 @@ export function Dialogs(props: TDialogsProps) {
         </div>
         <div className={styles.messages}>
           <ul className={styles.messagesList}>
-            {props.state.messageData.map(item => (
+            {props.messageData.map(item => (
               <MessageItem key={item.id} message={item.message} />
             ))}
           </ul>
@@ -66,7 +55,7 @@ export function Dialogs(props: TDialogsProps) {
             <input
               className={styles.inputMessage}
               onChange={changeInputMessage}
-              value={props.state.messageText}
+              value={props.messageText}
               type="text"
             />
             <button className={styles.btnSendMessage} type="submit">
