@@ -2,21 +2,13 @@ import { Outlet } from 'react-router-dom'
 
 import { Header } from '../Header'
 import { Main } from '../Main'
-import { Sidebar } from '../Sidebar'
-import { TSidebarFriends, TSidebarNavLink } from '../../types/type'
+import { SidebarContainer } from '../Sidebar/Sidebar'
 
-type TLayoutProps = {
-  state: {
-    sidebarNavLink: Array<TSidebarNavLink>
-    friends: Array<TSidebarFriends>
-  }
-}
-
-export function Layout(props: TLayoutProps) {
+export function Layout() {
   return (
     <>
       <Header />
-      <Sidebar state={props.state} />
+      <SidebarContainer />
       <Main>
         <Outlet />
       </Main>

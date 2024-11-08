@@ -1,40 +1,57 @@
-import { TAction } from '../../types/type'
+import { connect } from 'react-redux'
+
 import {
   actionCreatorAddMessage,
   actionCreatorChangeMessageText,
 } from '../../redux/Actions/messageAction'
-import { AppStore } from '../../redux/store'
 import { Dialogs } from './Dialogs'
+import { AppDispatch, RootState } from '../../redux/store'
 
-type TDialogsProps = {
-  store: AppStore
-  dispatch: (action: TAction) => void
+// export function DialogsContainer() {
+//   const dispatch = store.dispatch
+//   const { usersDialogsData, messageData, messageText } = store.getState().messagesPage
+
+//   const addNewMessage = () => {
+//     const actionAddMessage = actionCreatorAddMessage()
+//     const actionChangeMessageText = actionCreatorChangeMessageText('')
+
+//     dispatch(actionAddMessage)
+//     dispatch(actionChangeMessageText)
+//   }
+
+//   const changeInputMessage = (value: string) => {
+//     const actionChangeMessageText = actionCreatorChangeMessageText(value)
+
+//     dispatch(actionChangeMessageText)
+//   }
+
+//   return (
+//     <Dialogs
+//       addNewMessage={addNewMessage}
+//       changeInputMessage={changeInputMessage}
+//       usersDialogsData={usersDialogsData}
+//       messageData={messageData}
+//       messageText={messageText}
+//     />
+//   )
+// }
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    usersDialogsData: state.messagesPage.usersDialogsData,
+    messageData: state.messagesPage.messageData,
+    messageText: state.messagesPage.messageText,
+  }
 }
 
-export function DialogsContainer(props: TDialogsProps) {
-  const { usersDialogsData, messageData, messageText } = props.store.getState().messagesPage
-
-  const addNewMessage = () => {
-    const actionAddMessage = actionCreatorAddMessage()
-    const actionChangeMessageText = actionCreatorChangeMessageText('')
-
-    props.dispatch(actionAddMessage)
-    props.dispatch(actionChangeMessageText)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+  return {
+    addNewMessage: () => {
+      dispatch(actionCreatorAddMessage())
+      dispatch(actionCreatorChangeMessageText(''))
+    },
+    changeInputMessage: (value: string) => dispatch(actionCreatorChangeMessageText(value)),
   }
-
-  const changeInputMessage = (value: string) => {
-    const actionChangeMessageText = actionCreatorChangeMessageText(value)
-
-    props.dispatch(actionChangeMessageText)
-  }
-
-  return (
-    <Dialogs
-      addNewMessage={addNewMessage}
-      changeInputMessage={changeInputMessage}
-      usersDialogsData={usersDialogsData}
-      messageData={messageData}
-      messageText={messageText}
-    />
-  )
 }
+
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)

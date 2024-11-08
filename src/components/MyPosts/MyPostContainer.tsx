@@ -1,37 +1,50 @@
+import { connect } from 'react-redux'
+
 import {
-  TActionProfile,
   actionCreatorAddPost,
   actionCreatorChangeMyPostText,
 } from '../../redux/Actions/profileAction'
 import { MyPosts } from './MyPosts'
-import { AppStore } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 
-type TMyPostProps = {
-  store: AppStore
-  dispatch: (action: TActionProfile) => void
+// export function MyPostsContainer() {
+//   const dispatch = store.dispatch
+//   const { myPostData, myPostText } = store.getState().profilePage
+
+//   function addMyPost() {
+//     const action = actionCreatorAddPost()
+
+//     dispatch(action)
+//   }
+
+//   function changeMyPostInput(value: string) {
+//     const action = actionCreatorChangeMyPostText(value)
+
+//     dispatch(action)
+//   }
+
+//   return (
+//     <MyPosts
+//       addMyPost={addMyPost}
+//       changeMyPostInput={changeMyPostInput}
+//       myPostData={myPostData}
+//       myPostText={myPostText}
+//     />
+//   )
+// }
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    myPostData: state.profilePage.myPostData,
+    myPostText: state.profilePage.myPostText,
+  }
 }
 
-export function MyPostsContainer(props: TMyPostProps) {
-  const { myPostData, myPostText } = props.store.getState().profilePage
-
-  function addMyPost() {
-    const action = actionCreatorAddPost()
-
-    props.dispatch(action)
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+  return {
+    addMyPost: () => dispatch(actionCreatorAddPost()),
+    changeMyPostInput: (value: string) => dispatch(actionCreatorChangeMyPostText(value)),
   }
-
-  function changeMyPostInput(value: string) {
-    const action = actionCreatorChangeMyPostText(value)
-
-    props.dispatch(action)
-  }
-
-  return (
-    <MyPosts
-      addMyPost={addMyPost}
-      changeMyPostInput={changeMyPostInput}
-      myPostData={myPostData}
-      myPostText={myPostText}
-    />
-  )
 }
+
+export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
