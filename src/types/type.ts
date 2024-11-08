@@ -59,7 +59,7 @@ export type TState = {
 // --------------------------- STORE --------------------
 export type TAction = TActionProfile | TActionMessage
 
-export type TStore = {
+export type TCustomStore = {
   _state: TState
   _renderFunction: (state: TState) => void
   getState: () => TState

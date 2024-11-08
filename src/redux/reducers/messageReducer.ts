@@ -1,10 +1,55 @@
 import { TMessageData, TMessageDataState } from '../../types/type'
 import { ActionMessage, TActionMessage } from '../Actions/messageAction'
 
-export function messageReducer(
-  state: TMessageDataState,
-  action: TActionMessage,
-): TMessageDataState {
+const initialState: TMessageDataState = {
+  usersDialogsData: [
+    {
+      id: 1,
+      name: 'Андрей',
+    },
+    {
+      id: 2,
+      name: 'Ольга',
+    },
+    {
+      id: 3,
+      name: 'Света',
+    },
+    {
+      id: 4,
+      name: 'Игорь',
+    },
+    {
+      id: 5,
+      name: 'Вася',
+    },
+  ],
+  messageData: [
+    {
+      id: 1,
+      message: 'Hi!',
+    },
+    {
+      id: 2,
+      message: 'Hello!',
+    },
+    {
+      id: 3,
+      message: 'Как дела?',
+    },
+    {
+      id: 4,
+      message: 'Хорошо! У тебя как?',
+    },
+    {
+      id: 5,
+      message: 'Отлично!',
+    },
+  ],
+  messageText: '',
+}
+
+export function messageReducer(state = initialState, action: TActionMessage): TMessageDataState {
   switch (action.type) {
     case ActionMessage.ADD_MESSAGE: {
       const stateCopy = structuredClone(state)
@@ -26,6 +71,6 @@ export function messageReducer(
       return stateCopy
     }
     default:
-      throw new Error('Sorry, invalid action')
+      return state
   }
 }

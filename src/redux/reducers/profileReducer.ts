@@ -1,10 +1,27 @@
 import { TActionProfile, ActionProfile } from '../Actions/profileAction'
 import { TProfilePageState, TMyPostData } from '../../types/type'
 
-export function profileReducer(
-  state: TProfilePageState,
-  action: TActionProfile,
-): TProfilePageState {
+const initialState: TProfilePageState = {
+  myPostData: [
+    {
+      id: 1,
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
+      text: 'My first post',
+      like: 1,
+    },
+    {
+      id: 2,
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg',
+      text: 'Hi, my name is Dmitry',
+      like: 2,
+    },
+  ],
+  myPostText: '',
+}
+
+export function profileReducer(state = initialState, action: TActionProfile): TProfilePageState {
   switch (action.type) {
     case ActionProfile.ADD_POST: {
       const stateCopy = structuredClone(state)
@@ -30,6 +47,6 @@ export function profileReducer(
       return stateCopy
     }
     default:
-      throw new Error('Sorry, action type invalid')
+      return state
   }
 }

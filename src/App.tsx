@@ -7,8 +7,6 @@ import './App.scss'
 type TAppProps = {
   state: TState
   dispatch: (action: TAction) => void
-  // addMessage: () => void
-  // changeMessageText: (text: string) => void
 }
 
 export function App(props: TAppProps) {
