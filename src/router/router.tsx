@@ -9,8 +9,9 @@ import { Music } from '../pages/Music'
 import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
 import { TAction, TState } from '../types/type'
+import { AppStore } from '../redux/store'
 
-export const router = (state: TState, dispatch: (action: TAction) => void) =>
+export const router = (store: AppStore, state: TState, dispatch: (action: TAction) => void) =>
   createBrowserRouter([
     {
       path: PATHS.HOME,
@@ -22,7 +23,7 @@ export const router = (state: TState, dispatch: (action: TAction) => void) =>
         },
         {
           path: PATHS.PROFILE,
-          element: <Profile state={state.profilePage} dispatch={dispatch} />,
+          element: <Profile store={store} dispatch={dispatch} />,
         },
         {
           path: PATHS.DIALOGS,

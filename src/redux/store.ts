@@ -10,4 +10,6 @@ const rootReducer = combineReducers({
   messagesPage: messageReducer,
 })
 
+export type AppStore = typeof store
+
 export const store = createStore(rootReducer)

@@ -12,7 +12,7 @@ const container = document.getElementById('root')!
 const root = ReactDOM.createRoot(container)
 
 export function rerenderEntireTree(state: TState) {
-  root.render(<App state={state} dispatch={store.dispatch.bind(store)} />)
+  root.render(<App store={store} state={state} dispatch={store.dispatch.bind(store)} />)
 }
 
 rerenderEntireTree(store.getState())

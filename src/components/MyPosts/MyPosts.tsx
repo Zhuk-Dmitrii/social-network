@@ -2,34 +2,26 @@ import { ChangeEvent, FormEvent } from 'react'
 
 import { Post } from './Post'
 import { TMyPostData } from '../../types/type'
-import {
-  TActionProfile,
-  actionCreatorAddPost,
-  actionCreatorChangeMyPostText,
-} from '../../redux/Actions/profileAction'
 import styles from './MyPosts.module.scss'
 
 type TMyPostProps = {
   myPostData: Array<TMyPostData>
   myPostText: string
-  dispatch: (action: TActionProfile) => void
+  addMyPost: () => void
+  changeMyPostInput: (value: string) => void
 }
 
 export function MyPosts(props: TMyPostProps) {
   function addMyPost(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const action = actionCreatorAddPost()
-
-    props.dispatch(action)
+    props.addMyPost()
   }
 
   function changeMyPostInput(event: ChangeEvent<HTMLInputElement>) {
     const value = event.currentTarget.value
 
-    const action = actionCreatorChangeMyPostText(value)
-
-    props.dispatch(action)
+    props.changeMyPostInput(value)
   }
 
   return (
