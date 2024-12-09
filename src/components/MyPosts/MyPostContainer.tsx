@@ -16,7 +16,10 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addMyPost: () => dispatch(actionCreatorAddPost()),
+    addMyPost: () => {
+      dispatch(actionCreatorAddPost())
+      dispatch(actionCreatorChangeMyPostText(''))
+    },
     changeMyPostInput: (value: string) => dispatch(actionCreatorChangeMyPostText(value)),
   }
 }

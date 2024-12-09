@@ -35,7 +35,7 @@ export function profileReducer(state = initialState, action: TActionProfile): TP
       const stateCopy: typeof state = {
         ...state,
         myPostData: [...state.myPostData, newPost],
-        myPostText: '',
+        // myPostText: '',
       }
 
       return stateCopy
