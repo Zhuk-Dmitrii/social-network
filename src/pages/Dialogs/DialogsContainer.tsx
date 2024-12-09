@@ -7,35 +7,6 @@ import {
 import { Dialogs } from './Dialogs'
 import { AppDispatch, RootState } from '../../redux/store'
 
-// export function DialogsContainer() {
-//   const dispatch = store.dispatch
-//   const { usersDialogsData, messageData, messageText } = store.getState().messagesPage
-
-//   const addNewMessage = () => {
-//     const actionAddMessage = actionCreatorAddMessage()
-//     const actionChangeMessageText = actionCreatorChangeMessageText('')
-
-//     dispatch(actionAddMessage)
-//     dispatch(actionChangeMessageText)
-//   }
-
-//   const changeInputMessage = (value: string) => {
-//     const actionChangeMessageText = actionCreatorChangeMessageText(value)
-
-//     dispatch(actionChangeMessageText)
-//   }
-
-//   return (
-//     <Dialogs
-//       addNewMessage={addNewMessage}
-//       changeInputMessage={changeInputMessage}
-//       usersDialogsData={usersDialogsData}
-//       messageData={messageData}
-//       messageText={messageText}
-//     />
-//   )
-// }
-
 const mapStateToProps = (state: RootState) => {
   return {
     usersDialogsData: state.messagesPage.usersDialogsData,

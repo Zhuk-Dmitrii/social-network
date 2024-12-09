@@ -52,21 +52,23 @@ const initialState: TMessageDataState = {
 export function messageReducer(state = initialState, action: TActionMessage): TMessageDataState {
   switch (action.type) {
     case ActionMessage.ADD_MESSAGE: {
-      const stateCopy = structuredClone(state)
-
       const newMessage: TMessageData = {
         id: action.id,
         message: state.messageText,
       }
 
-      stateCopy.messageData.push(newMessage)
+      const stateCopy: typeof state = {
+        ...state,
+        messageData: [...state.messageData, newMessage],
+      }
 
       return stateCopy
     }
     case ActionMessage.CHANGE_MESSAGE_TEXT: {
-      const stateCopy = structuredClone(state)
-
-      stateCopy.messageText = action.text
+      const stateCopy: typeof state = {
+        ...state,
+        messageText: action.text,
+      }
 
       return stateCopy
     }
