@@ -24,8 +24,6 @@ const initialState: TProfilePageState = {
 export function profileReducer(state = initialState, action: TActionProfile): TProfilePageState {
   switch (action.type) {
     case ActionProfile.ADD_POST: {
-      const stateCopy = structuredClone(state)
-
       const newPost: TMyPostData = {
         id: action.id,
         avatar:
@@ -34,15 +32,19 @@ export function profileReducer(state = initialState, action: TActionProfile): TP
         like: 0,
       }
 
-      stateCopy.myPostData.push(newPost)
-      stateCopy.myPostText = ''
+      const stateCopy: typeof state = {
+        ...state,
+        myPostData: [...state.myPostData, newPost],
+        myPostText: '',
+      }
 
       return stateCopy
     }
     case ActionProfile.CHANGE_MY_POST_TEXT: {
-      const stateCopy = structuredClone(state)
-
-      stateCopy.myPostText = action.text
+      const stateCopy: typeof state = {
+        ...state,
+        myPostText: action.text,
+      }
 
       return stateCopy
     }

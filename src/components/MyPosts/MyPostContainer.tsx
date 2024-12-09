@@ -7,32 +7,6 @@ import {
 import { MyPosts } from './MyPosts'
 import { AppDispatch, RootState } from '../../redux/store'
 
-// export function MyPostsContainer() {
-//   const dispatch = store.dispatch
-//   const { myPostData, myPostText } = store.getState().profilePage
-
-//   function addMyPost() {
-//     const action = actionCreatorAddPost()
-
-//     dispatch(action)
-//   }
-
-//   function changeMyPostInput(value: string) {
-//     const action = actionCreatorChangeMyPostText(value)
-
-//     dispatch(action)
-//   }
-
-//   return (
-//     <MyPosts
-//       addMyPost={addMyPost}
-//       changeMyPostInput={changeMyPostInput}
-//       myPostData={myPostData}
-//       myPostText={myPostText}
-//     />
-//   )
-// }
-
 const mapStateToProps = (state: RootState) => {
   return {
     myPostData: state.profilePage.myPostData,
