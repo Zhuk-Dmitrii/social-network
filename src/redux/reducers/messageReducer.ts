@@ -49,7 +49,10 @@ const initialState: TMessageDataState = {
   messageText: '',
 }
 
-export function messageReducer(state = initialState, action: TActionMessage): TMessageDataState {
+export function messageReducer(
+  state: TMessageDataState = initialState,
+  action: TActionMessage,
+): TMessageDataState {
   switch (action.type) {
     case ActionMessage.ADD_MESSAGE: {
       const newMessage: TMessageData = {
@@ -57,7 +60,7 @@ export function messageReducer(state = initialState, action: TActionMessage): TM
         message: state.messageText,
       }
 
-      const stateCopy: typeof state = {
+      const stateCopy: TMessageDataState = {
         ...state,
         messageData: [...state.messageData, newMessage],
       }
@@ -65,7 +68,7 @@ export function messageReducer(state = initialState, action: TActionMessage): TM
       return stateCopy
     }
     case ActionMessage.CHANGE_MESSAGE_TEXT: {
-      const stateCopy: typeof state = {
+      const stateCopy: TMessageDataState = {
         ...state,
         messageText: action.text,
       }
