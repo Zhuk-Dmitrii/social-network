@@ -21,7 +21,10 @@ const initialState: TProfilePageState = {
   myPostText: '',
 }
 
-export function profileReducer(state = initialState, action: TActionProfile): TProfilePageState {
+export function profileReducer(
+  state: TProfilePageState = initialState,
+  action: TActionProfile,
+): TProfilePageState {
   switch (action.type) {
     case ActionProfile.ADD_POST: {
       const newPost: TMyPostData = {
@@ -32,7 +35,7 @@ export function profileReducer(state = initialState, action: TActionProfile): TP
         like: 0,
       }
 
-      const stateCopy: typeof state = {
+      const stateCopy: TProfilePageState = {
         ...state,
         myPostData: [...state.myPostData, newPost],
       }
@@ -40,7 +43,7 @@ export function profileReducer(state = initialState, action: TActionProfile): TP
       return stateCopy
     }
     case ActionProfile.CHANGE_MY_POST_TEXT: {
-      const stateCopy: typeof state = {
+      const stateCopy: TProfilePageState = {
         ...state,
         myPostText: action.text,
       }
