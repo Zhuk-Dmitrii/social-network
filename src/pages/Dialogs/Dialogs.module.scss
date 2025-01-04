@@ -71,6 +71,7 @@
   padding-left: 20px;
   padding-bottom: 20px;
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .messagesList > :not(:last-child) {

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react'
+import { ChangeEvent, FormEvent, useRef, useEffect } from 'react'
 
 import { MessageItem } from '../../components/MessageItem'
 import { NavLinkItem } from '../../components/NavLinkItem'
@@ -15,6 +15,14 @@ type TDialogsProps = {
 }
 
 export function Dialogs(props: TDialogsProps) {
+  const lastMessageRef = useRef<HTMLUListElement | null>(null)
+
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollTop = lastMessageRef.current.scrollHeight
+    }
+  }, [props.messageData])
+
   const addNewMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -46,7 +54,7 @@ export function Dialogs(props: TDialogsProps) {
           </ul>
         </div>
         <div className={styles.messages}>
-          <ul className={styles.messagesList}>
+          <ul className={styles.messagesList} ref={lastMessageRef}>
             {props.messageData.map(item => (
               <MessageItem key={item.id} message={item.message} />
             ))}
