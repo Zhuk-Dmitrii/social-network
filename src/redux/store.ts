@@ -3,11 +3,13 @@ import { combineReducers, legacy_createStore as createStore } from '@reduxjs/too
 import { messageReducer } from './reducers/messageReducer'
 import { profileReducer } from './reducers/profileReducer'
 import { sidebarReducer } from './reducers/sidebarReducer'
+import { findUsersReducer } from './reducers/findUsersReducer'
 
 const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   profilePage: profileReducer,
   messagesPage: messageReducer,
+  findUsers: findUsersReducer,
 })
 
 export type AppStore = typeof store

@@ -1,5 +1,6 @@
 import { TActionProfile } from '../redux/Actions/profileAction'
 import { TActionMessage } from '../redux/Actions/messageAction'
+import { TActionFindUsers } from '../redux/Actions/findUsersAction'
 
 // --------------------------- SIDE BAR --------------------
 export type TSidebarNavLink = {
@@ -49,6 +50,22 @@ export type TMessageDataState = {
   messageText: string
 }
 
+// --------------------------- FIND USERS --------------------
+export type TFindUsersData = {
+  id: string
+  userName: string
+  followed: boolean
+  status: string
+  location: {
+    city: string
+    country: string
+  }
+}
+
+export type TFindUsersState = {
+  users: Array<TFindUsersData>
+}
+
 // --------------------------- STATE --------------------
 export type TState = {
   sidebar: TSidebarNavLinkState
@@ -57,7 +74,7 @@ export type TState = {
 }
 
 // --------------------------- STORE --------------------
-export type TAction = TActionProfile | TActionMessage
+export type TAction = TActionProfile | TActionMessage | TActionFindUsers
 
 export type TCustomStore = {
   _state: TState

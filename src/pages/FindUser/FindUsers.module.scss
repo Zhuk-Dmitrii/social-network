@@ -13,4 +13,8 @@
   padding-left: 50px;
   display: flex;
   flex-direction: column;
+
+  & > :not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
