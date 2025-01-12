@@ -6,6 +6,7 @@ import { Profile } from '../pages/Profile'
 import { DialogsContainer } from '../pages/Dialogs'
 import { News } from '../pages/News'
 import { Music } from '../pages/Music'
+import { FindUsers } from '../pages/FindUser'
 import { Settings } from '../pages/Settings'
 import { NotFound } from '../pages/NotFound'
 
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: PATHS.SETTINGS,
         element: <Settings />,
+      },
+      {
+        path: PATHS.FIND_USERS,
+        element: <FindUsers />,
       },
       {
         path: PATHS.NOT_FOUND,

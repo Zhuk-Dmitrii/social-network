@@ -23,6 +23,10 @@
     }
   }
 
+  & .menuItem:last-child {
+    margin-top: 50px;
+  }
+
   & > li > a {
     display: block;
     padding: 0 10px;

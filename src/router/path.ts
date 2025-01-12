@@ -8,6 +8,7 @@ export enum PATHS {
   NEWS = '/news',
   MUSIC = '/music',
   SETTINGS = '/settings',
+  FIND_USERS = '/find-users',
 
   // Error
   NOT_FOUND = '*',

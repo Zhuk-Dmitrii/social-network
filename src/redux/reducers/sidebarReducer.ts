@@ -29,6 +29,11 @@ const initialState: TSidebarNavLinkState = {
       path: PATHS.SETTINGS,
       value: 'Settings',
     },
+    {
+      id: 6,
+      path: PATHS.FIND_USERS,
+      value: 'Find users',
+    },
   ],
   friends: [
     {
